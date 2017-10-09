@@ -7,14 +7,14 @@ import {
 } from './chartUtil'
 
 export default BaseChart.extend({
-  name: 'adx-chart',
+  name: 'rsi-chart',
   props: ['chartData', 'dimension', 'margin', 'title'],
 
   methods: {
 
     renderChart() {
       let data = this.chartData
-      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'adx')
+      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'rsi')
 
       this.draw(svgSetup, data)
     },
@@ -26,17 +26,18 @@ export default BaseChart.extend({
       let x = svgSetup.x
       let y = svgSetup.y
 
-      let adx = techan.plot.adx()
+      let rsi = techan.plot.rsi()
         .xScale(x)
         .yScale(y);
+      let accessor = rsi.accessor();
       data = data.sort(function(a, b) {
-        return d3.ascending(adx.accessor().d(a), adx.accessor().d(b))
+        return d3.ascending(accessor.d(a), accessor.d(b))
       })
-      let adxData = techan.indicator.adx()(data);
-      x.domain(adxData.map(adx.accessor().d));
-      y.domain(techan.scale.plot.adx(adxData).domain());
+      var rsiData = techan.indicator.rsi()(data);
+      x.domain(rsiData.map(rsi.accessor().d));
+      y.domain(techan.scale.plot.rsi(rsiData).domain());
 
-      svg.selectAll('g.adx').datum(adxData).call(adx);
+      svg.selectAll('g.rsi').datum(rsiData).call(rsi);
       svg.selectAll('g.x.axis').call(xAxis);
       svg.selectAll('g.y.axis').call(yAxis);
     }
@@ -45,24 +46,24 @@ export default BaseChart.extend({
 </script>
 
 <style>
-.adx path {
+.rsi path {
   fill: none;
   stroke-width: 1;
 }
 
-.adx {
+.rsi {
   stroke: #000000;
 }
 
-.adx path.adx {
-  stroke: #000000;
+.rsi path.overbought,
+.rsi path.oversold {
+  stroke: #FF9999;
+  stroke-dasharray: 5, 5;
 }
 
-.adx path.plusDi {
-  stroke: #00ff00;
-}
-
-.adx path.minusDi {
-  stroke: #ff0000;
+.rsi path.middle,
+path.zero {
+  stroke: #BBBBBB;
+  stroke-dasharray: 5, 5;
 }
 </style>

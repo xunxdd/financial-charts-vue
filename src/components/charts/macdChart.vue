@@ -7,14 +7,14 @@ import {
 } from './chartUtil'
 
 export default BaseChart.extend({
-  name: 'adx-chart',
+  name: 'macd-chart',
   props: ['chartData', 'dimension', 'margin', 'title'],
 
   methods: {
 
     renderChart() {
       let data = this.chartData
-      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'adx')
+      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'macd')
 
       this.draw(svgSetup, data)
     },
@@ -26,17 +26,19 @@ export default BaseChart.extend({
       let x = svgSetup.x
       let y = svgSetup.y
 
-      let adx = techan.plot.adx()
+      let macd = techan.plot.macd()
         .xScale(x)
         .yScale(y);
-      data = data.sort(function(a, b) {
-        return d3.ascending(adx.accessor().d(a), adx.accessor().d(b))
-      })
-      let adxData = techan.indicator.adx()(data);
-      x.domain(adxData.map(adx.accessor().d));
-      y.domain(techan.scale.plot.adx(adxData).domain());
+      let accessor = macd.accessor();
 
-      svg.selectAll('g.adx').datum(adxData).call(adx);
+      data = data.sort(function(a, b) {
+        return d3.ascending(accessor.d(a), accessor.d(b))
+      })
+      let macdData = techan.indicator.macd()(data);
+      x.domain(macdData.map(macd.accessor().d));
+      y.domain(techan.scale.plot.macd(macdData).domain());
+
+      svg.selectAll('g.macd').datum(macdData).call(macd);
       svg.selectAll('g.x.axis').call(xAxis);
       svg.selectAll('g.y.axis').call(yAxis);
     }
@@ -45,24 +47,27 @@ export default BaseChart.extend({
 </script>
 
 <style>
-.adx path {
+path {
   fill: none;
   stroke-width: 1;
 }
 
-.adx {
-  stroke: #000000;
+path.macd {
+  stroke: #0000AA;
 }
 
-.adx path.adx {
-  stroke: #000000;
+path.signal {
+  stroke: #FF9999;
 }
 
-.adx path.plusDi {
-  stroke: #00ff00;
+path.zero {
+  stroke: #BBBBBB;
+  stroke-dasharray: 0;
+  stroke-opacity: 0.5;
 }
 
-.adx path.minusDi {
-  stroke: #ff0000;
+path.difference {
+  fill: #BBBBBB;
+  opacity: 0.5;
 }
 </style>

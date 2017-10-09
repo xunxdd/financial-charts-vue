@@ -49,15 +49,7 @@ export default BaseChart.extend({
         .yScale(y)
         .xAnnotation([timeAnnotation, timeTopAnnotation])
         .yAnnotation([ohlcAnnotation, ohlcRightAnnotation])
-        .on('enter', (d) => {
-          console.log(d)
-        })
-        .on('out', (d) => {
-          console.log(d)
-        })
-        .on('move', (d) => {
-          console.log(d)
-        })
+
       let svg = d3.select(this.$el)
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)

@@ -7,14 +7,14 @@ import {
 } from './chartUtil'
 
 export default BaseChart.extend({
-  name: 'adx-chart',
+  name: 'atr-chart',
   props: ['chartData', 'dimension', 'margin', 'title'],
 
   methods: {
 
     renderChart() {
       let data = this.chartData
-      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'adx')
+      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'atr')
 
       this.draw(svgSetup, data)
     },
@@ -26,17 +26,17 @@ export default BaseChart.extend({
       let x = svgSetup.x
       let y = svgSetup.y
 
-      let adx = techan.plot.adx()
+      let atr = techan.plot.atr()
         .xScale(x)
         .yScale(y);
       data = data.sort(function(a, b) {
-        return d3.ascending(adx.accessor().d(a), adx.accessor().d(b))
+        return d3.ascending(atr.accessor().d(a), atr.accessor().d(b))
       })
-      let adxData = techan.indicator.adx()(data);
-      x.domain(adxData.map(adx.accessor().d));
-      y.domain(techan.scale.plot.adx(adxData).domain());
+      let atrData = techan.indicator.atr()(data);
+      x.domain(atrData.map(atr.accessor().d));
+      y.domain(techan.scale.plot.atr(atrData).domain());
 
-      svg.selectAll('g.adx').datum(adxData).call(adx);
+      svg.selectAll('g.atr').datum(atrData).call(atr);
       svg.selectAll('g.x.axis').call(xAxis);
       svg.selectAll('g.y.axis').call(yAxis);
     }
@@ -45,24 +45,9 @@ export default BaseChart.extend({
 </script>
 
 <style>
-.adx path {
-  fill: none;
-  stroke-width: 1;
-}
-
-.adx {
-  stroke: #000000;
-}
-
-.adx path.adx {
-  stroke: #000000;
-}
-
-.adx path.plusDi {
-  stroke: #00ff00;
-}
-
-.adx path.minusDi {
-  stroke: #ff0000;
-}
+.atr path {
+       fill: none;
+       stroke-width: 1;
+       stroke: #000000;
+   }
 </style>

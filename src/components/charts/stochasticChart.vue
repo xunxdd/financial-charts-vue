@@ -7,14 +7,14 @@ import {
 } from './chartUtil'
 
 export default BaseChart.extend({
-  name: 'adx-chart',
+  name: 'stochastic-chart',
   props: ['chartData', 'dimension', 'margin', 'title'],
 
   methods: {
 
     renderChart() {
       let data = this.chartData
-      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'adx')
+      let svgSetup = getChartConfig(this.dimension, this.margin, this.$el, 'stochastic')
 
       this.draw(svgSetup, data)
     },
@@ -26,17 +26,18 @@ export default BaseChart.extend({
       let x = svgSetup.x
       let y = svgSetup.y
 
-      let adx = techan.plot.adx()
+      let stochastic = techan.plot.stochastic()
         .xScale(x)
         .yScale(y);
+      let accessor = stochastic.accessor();
       data = data.sort(function(a, b) {
-        return d3.ascending(adx.accessor().d(a), adx.accessor().d(b))
+        return d3.ascending(accessor.d(a), accessor.d(b))
       })
-      let adxData = techan.indicator.adx()(data);
-      x.domain(adxData.map(adx.accessor().d));
-      y.domain(techan.scale.plot.adx(adxData).domain());
+      let stochasticData = techan.indicator.stochastic()(data);
+      x.domain(stochasticData.map(stochastic.accessor().d));
+      y.domain(techan.scale.plot.stochastic().domain());
 
-      svg.selectAll('g.adx').datum(adxData).call(adx);
+      svg.selectAll('g.stochastic').datum(stochasticData).call(stochastic);
       svg.selectAll('g.x.axis').call(xAxis);
       svg.selectAll('g.y.axis').call(yAxis);
     }
@@ -45,24 +46,22 @@ export default BaseChart.extend({
 </script>
 
 <style>
-.adx path {
+.stochastic path {
   fill: none;
   stroke-width: 1;
 }
 
-.adx {
-  stroke: #000000;
+.stochastic.up {
+  stroke: #00AA00;
 }
 
-.adx path.adx {
-  stroke: #000000;
+.stochastic.down {
+  stroke: #FF0000;
 }
 
-.adx path.plusDi {
-  stroke: #00ff00;
-}
-
-.adx path.minusDi {
-  stroke: #ff0000;
+.stochastic path.overbought,
+.stochastic path.oversold {
+  stroke: #FF9999;
+  stroke-dasharray: 5, 5;
 }
 </style>

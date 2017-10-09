@@ -78,6 +78,34 @@ export default {
           {
             text: 'Trailing Stop',
             link: '/indicator/trailingstop'
+          },
+          {
+            text: 'Atr',
+            link: '/indicator/atr'
+          },
+          {
+            text: 'Heikin-Ashi',
+            link: '/indicator/heikinashi'
+          },
+          {
+            text: 'Ichimoku',
+            link: '/indicator/ichimoku'
+          },
+          {
+            text: 'MACD',
+            link: '/indicator/macd'
+          },
+          {
+            text: 'RSI',
+            link: '/indicator/rsi'
+          },
+          {
+            text: 'Stochastic',
+            link: '/indicator/stochastic'
+          },
+          {
+            text: 'Williams %R',
+            link: '/indicator/williams'
           }
         ]
       }
