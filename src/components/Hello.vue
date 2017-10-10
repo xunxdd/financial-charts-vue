@@ -1,8 +1,11 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-  
+    <h1>Welcome, charts lovers</h1>
+    <h2>All of the charts in this collection are modified from <a href="https://github.com/andredumas/techan.js">
+      Techan.js</a>
+    </h2>
+    <h2>All of them are written using Vue.js</h2>
+
   </div>
 </template>
 
