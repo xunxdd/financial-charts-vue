@@ -1,5 +1,5 @@
 <template>
-<v-app id="inspire"  grey lighten-4>
+<v-app id="inspire" grey lighten-4>
   <navigation></navigation>
   <v-toolbar app fixed clipped-left class="indigo darken-1">
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -31,15 +31,20 @@ export default {
 </script>
 
 <style>
+.list__tile {
+  font-size: 11px;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-.text-white, a.text-white {
+
+.text-white,
+a.text-white {
   color: white;
 }
 </style>

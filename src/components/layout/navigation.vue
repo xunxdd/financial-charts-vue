@@ -1,6 +1,6 @@
 <template>
 <v-navigation-drawer persistent v-model="drawer" clipped persistent enable-resize-watcher app>
-  <v-list>
+  <v-list dense>
     <v-list-tile class="full-width" to="/home">
       <v-list-tile-action>
         <v-icon>dashboard</v-icon>
