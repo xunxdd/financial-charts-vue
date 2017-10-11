@@ -1,0 +1,10 @@
+{
+ "name": "financial-charts",
+ "version": "1.0.0",
+ "description": "financial charts",
+ "author": "Xun Ding",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express"
+ }
+}

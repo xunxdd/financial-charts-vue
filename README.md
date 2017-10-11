@@ -30,6 +30,4 @@ npm test
 ## Notes
 
 All of the charts in the repo are modified from <a href="https://github.com/andredumas/techan.js">
-  Techan.js</a>
-
-  
+  Techan.js</a>. 
