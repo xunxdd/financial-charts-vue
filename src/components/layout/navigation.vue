@@ -1,13 +1,13 @@
 <template>
 <v-navigation-drawer persistent v-model="drawer" clipped persistent enable-resize-watcher app>
   <v-list dense>
-    <v-list-tile class="full-width" to="/home">
+    <v-list-tile class="full-width" to="/allPlots">
       <v-list-tile-action>
         <v-icon>dashboard</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          hello
+          All Plots
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -31,6 +31,16 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list-group>
+    <v-list-tile class="full-width" to="/home">
+      <v-list-tile-action>
+        <v-icon>fa-info</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>
+          Info
+        </v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
   </v-list>
 
 </v-navigation-drawer>
@@ -42,7 +52,7 @@ export default {
   data: () => ({
     drawer: true,
     items: [{
-        icon: 'trending_up',
+        icon: 'fa-signal',
         text: 'Plot',
         active: true,
         items: [{
@@ -64,7 +74,7 @@ export default {
         ]
       },
       {
-        icon: 'trending_up',
+        icon: 'fa-line-chart',
         text: 'Indicators',
         active: true,
         items: [{

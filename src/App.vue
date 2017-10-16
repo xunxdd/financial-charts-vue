@@ -1,9 +1,11 @@
 <template>
-<v-app id="inspire" grey lighten-4>
+<v-app>
   <navigation></navigation>
   <v-toolbar app fixed clipped-left class="indigo darken-1">
-    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click.stop="drawer = !drawer" style="color:white"></v-toolbar-side-icon>
     <v-toolbar-title class="text-white">Financial Charts (Vue, D3, techan)</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <a href="http://githb"><v-icon class="btn-white">fa-github</v-icon></a>
   </v-toolbar>
   <main>
     <v-content>
@@ -43,8 +45,14 @@ export default {
   margin-top: 60px;
 }
 
-.text-white,
-a.text-white {
+.btn.btn-white .btn__content .icon,
+.icon.btn-white,
+.text-white {
   color: white;
+}
+nav.toolbar a,
+.footer a {
+  color: white;
+  text-decoration: none;
 }
 </style>

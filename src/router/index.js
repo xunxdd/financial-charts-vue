@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Chart from '@/components/chart'
 import IndicatorChart from '@/components/indicatorChart'
+import AllPlotsChart from '@/components/allPlotsChart'
 
 Vue.use(Router)
 
@@ -10,13 +11,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      component: AllPlotsChart
     },
     {
-      path: '/home',
-      name: 'Hello',
-      component: Hello
+      path: '/allPlots',
+      component: AllPlotsChart
     },
     {
       path: '/chart/:type',
@@ -27,6 +26,10 @@ export default new Router({
       path: '/indicator/:type',
       component: IndicatorChart,
       props: true
+    },
+    {
+      path: '/info',
+      component: Hello
     }
   ]
 })

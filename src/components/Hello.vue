@@ -1,11 +1,7 @@
 <template>
-  <div class="hello">
-    <p>All of the charts in this collection are modified from <a href="https://github.com/andredumas/techan.js">
-      Techan.js</a>
-    </p>
-    <p>All of the charts are written in Vue.js</p>
-
-  </div>
+<div>
+  All charts are modified in Vue.js from <a href="techanjs.org">TechJs.org</a>, a visual, stock charting (Candlestick, OHLC, indicators) and technical analysis library built on D3.
+</div>
 </template>
 
 <script>
