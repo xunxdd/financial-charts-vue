@@ -2,10 +2,12 @@
 <v-app>
   <navigation></navigation>
   <v-toolbar app fixed clipped-left class="indigo darken-1">
-    <v-toolbar-side-icon @click.stop="drawer = !drawer" style="color:white"></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     <v-toolbar-title class="text-white">Financial Charts (Vue, D3, techan)</v-toolbar-title>
     <v-spacer></v-spacer>
-    <a href="http://githb"><v-icon class="btn-white">fa-github</v-icon></a>
+    <a href="http://githb">
+      <v-icon class="btn-white" style="color:white">fa-github</v-icon>
+    </a>
   </v-toolbar>
   <main>
     <v-content>
@@ -25,6 +27,9 @@ import Navigation from './components/layout/navigation'
 import Bottom from './components/layout/footer'
 export default {
   name: 'app',
+  data: () => ({
+    drawer: true
+  }),
   components: {
     Navigation,
     Bottom
@@ -50,6 +55,7 @@ export default {
 .text-white {
   color: white;
 }
+
 nav.toolbar a,
 .footer a {
   color: white;

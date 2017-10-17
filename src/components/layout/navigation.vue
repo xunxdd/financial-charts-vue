@@ -31,7 +31,7 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list-group>
-    <v-list-tile class="full-width" to="/home">
+    <v-list-tile class="full-width" to="/info">
       <v-list-tile-action>
         <v-icon>fa-info</v-icon>
       </v-list-tile-action>

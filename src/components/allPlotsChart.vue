@@ -15,7 +15,7 @@ import TradesData from '../assets/data/tradesData'
 var d3 = window.d3;
 
 export default {
-  name: 'chart',
+  name: 'AllPlotsChart',
   props: {
     type: String
   },
