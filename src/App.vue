@@ -5,7 +5,7 @@
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     <v-toolbar-title class="text-white">Financial Charts (Vue, D3, techan)</v-toolbar-title>
     <v-spacer></v-spacer>
-    <a href="http://githb">
+    <a href="https://github.com/xunxdd/financial-charts-vue">
       <v-icon class="btn-white" style="color:white">fa-github</v-icon>
     </a>
   </v-toolbar>
