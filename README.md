@@ -1,6 +1,7 @@
 # financial-charts
 
-> Financial charts in d3.js, vue and techan
+> Financial charts using D3, vue and techan
+> Sample charts include Candlestick, OHLC, Volume
 
 ![Sample Chart](http://vue-fin-charts.herokuapp.com/fin-charts.png?raw=true)
 
