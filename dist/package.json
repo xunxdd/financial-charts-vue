@@ -1,0 +1,10 @@
+{
+ "name": "fin",
+ "version": "1.0.0",
+ "description": "personalblog",
+ "author": "me",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express"
+ }
+}
